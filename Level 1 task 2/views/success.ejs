@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Success</title>
+    <style>
+        body {
+            background: #d4fc79;
+            background: linear-gradient(to right, #96e6a1, #d4fc79);
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .success-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: green;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="success-container">
+        <h1>Submission Successful!</h1>
+        <p><strong>Username:</strong> <%= data.username %></p>
+        <p><strong>Email:</strong> <%= data.email %></p>
+        <p><strong>Age:</strong> <%= data.age %> years</p>
+        <p><strong>Bio:</strong> <%= data.bio %></p>
+    </div>
+</body>
+</html>

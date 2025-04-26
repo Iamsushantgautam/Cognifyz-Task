@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extend form validation and
+        implement dynamic updates to the DOM</title>
+    <link rel="stylesheet" href="/style.css">
+    <script defer src="/script.js"></script>
+</head>
+
+<body>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#form">Form</a>
+    </nav>
+
+    <div id="home" class="section active">
+        <h1>Welcome to Cognifyz</h1>
+        <p>Where Data Meets Intelligence</p>
+    </div>
+
+    <div id="form" class="section">
+        <h2>Register</h2>
+        <form id="registrationForm">
+            <input type="text" id="username" placeholder="Username" required><br>
+            <input type="email" id="email" placeholder="Email" required><br>
+            <input type="password" id="password" placeholder="Password" required><br>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="formMessage"></div>
+    </div>
+
+</body>
+</html>

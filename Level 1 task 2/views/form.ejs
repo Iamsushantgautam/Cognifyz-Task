@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Form</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #d4fc79;
+            background: linear-gradient(to right, #96e6a1, #d4fc79);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .form-container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 500px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: 600;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+    </style>
+
+    <!-- Inline Client-Side JavaScript Validation -->
+    <script>
+        function validateForm() {
+            const username = document.forms["userForm"]["username"].value;
+            const email = document.forms["userForm"]["email"].value;
+            const age = document.forms["userForm"]["age"].value;
+            const bio = document.forms["userForm"]["bio"].value;
+
+            if (username === "" || email === "" || age === "" || bio === "") {
+                alert("All fields must be filled out!");
+                return false;
+            }
+
+            if (!email.includes("@")) {
+                alert("Please enter a valid email address!");
+                return false;
+            }
+
+            if (isNaN(age) || age <= 0) {
+                alert("Age must be a positive number!");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+    <div class="form-container">
+        <h1>Register Here</h1>
+
+        <% if (error) { %>
+            <div class="error"><%= error %></div>
+        <% } %>
+
+        <form name="userForm" action="/submit" method="POST" onsubmit="return validateForm()">
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" value="<%= oldData.username || '' %>">
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" value="<%= oldData.email || '' %>">
+
+            <label for="age">Age:</label>
+            <input type="text" name="age" id="age" value="<%= oldData.age || '' %>">
+
+            <label for="bio">Short Bio:</label>
+            <textarea name="bio" id="bio"><%= oldData.bio || '' %></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

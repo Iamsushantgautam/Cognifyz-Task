@@ -1,0 +1,135 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+    background: linear-gradient(to right, #74ebd5, #acb6e5);
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Form and Success Container */
+.form-container, .success-container {
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 450px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Form Titles */
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+    font-size: 28px;
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+}
+
+
+input[type="text"],
+input[type="email"] {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #f9f9f9;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+    border-color: #74ebd5;
+    background: #fff;
+    outline: none;
+}
+
+
+button {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(to right, #43e97b, #38f9d7);
+}
+
+/* Success Page specific */
+.success-container h1 {
+    color: #4CAF50;
+}
+
+.success-container p {
+    font-size: 18px;
+    margin: 12px 0;
+    color: #333;
+}
+
+.success-container a {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(to right, #ff512f, #dd2476);
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.success-container a:hover {
+    background: linear-gradient(to right, #2193b0, #6dd5ed);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .form-container, .success-container {
+        padding: 30px 20px;
+    }
+    h1 {
+        font-size: 24px;
+    }
+    input[type="text"],
+    input[type="email"] {
+        font-size: 14px;
+        padding: 10px 12px;
+    }
+    button, .success-container a {
+        font-size: 15px;
+        padding: 12px;
+    }
+}
