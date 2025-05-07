@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>API Integration</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Item List</h1>
+  <input id="itemInput" placeholder="Enter item" />
+  <button onclick="addItem()">Add</button>
+  <ul id="itemList"></ul>
+
+  <script>
+    const apiUrl = 'http://localhost:3000/items';
+  
+    async function fetchItems() {
+      const res = await fetch(apiUrl);
+      const items = await res.json();
+      document.getElementById('itemList').innerHTML =
+        items.map(item => `
+          <li>
+            <input value="${item.name}" id="input-${item.id}" />
+            <button onclick="updateItem(${item.id})">Update</button>
+            <button onclick="deleteItem(${item.id})">Delete</button>
+          </li>
+        `).join('');
+    }
+  
+    async function addItem() {
+      const name = document.getElementById('itemInput').value;
+      if (!name) return;
+      await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name }),
+      });
+      document.getElementById('itemInput').value = '';
+      fetchItems();
+    }
+  
+    async function updateItem(id) {
+      const updatedName = document.getElementById(`input-${id}`).value;
+      await fetch(`${apiUrl}/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: updatedName }),
+      });
+      fetchItems();
+    }
+  
+    async function deleteItem(id) {
+      await fetch(`${apiUrl}/${id}`, { method: 'DELETE' });
+      fetchItems();
+    }
+  
+    fetchItems();
+  </script>
+  
+</body>
+</html>
